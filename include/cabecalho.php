@@ -20,20 +20,20 @@
 			</button>
 			<div class="collapse navbar-collapse" id="navbarSupportedContent">
 				<ul class="navbar-nav me-auto mb-2 mb-lg-0 text-center">						
-					<li class="nav-item dropdown pt-3">
+					<li class="nav-item dropdown pt-1">
 						<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Empréstimos e Serviços</a>
-					<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-						<li><a class="dropdown-item" href="#">Empréstimo Automático</a></li>
-						<li><a class="dropdown-item" href="#">Empréstimo Consignado</a></li>							
-						<li><hr class="dropdown-divider"></li>
-						<li><a class="dropdown-item" href="#">Simulação de empréstimo</a></li>
-					</ul>
+						<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+							<li><a class="dropdown-item" href="#linhaDinamicaDeEmprestimos">Empréstimo Automático</a></li>
+							<li><a class="dropdown-item" href="#linhaDinamicaDeEmprestimos">Empréstimo Consignado</a></li>							
+							<li><hr class="dropdown-divider"></li>
+							<li><a class="dropdown-item" href="#">Simulação de empréstimo</a></li>
+						</ul>
 					</li>
-					<li class="nav-item pt-3">												
+					<li class="nav-item pt-1">												
 						<?php		
 							$nome = $_SESSION['nome'] ?? "";
 							$sobrenome = $_SESSION['sobrenome'] ?? "";
-							if($nome != NULL){
+							if($nome != NULL){								
 								echo "<u><p class='pt-2'>";
 								echo $nome." ".$sobrenome;
 								echo "<button type='button' class='btn btn-outline-danger p-0 pe-5 ps-5 ms-3' id='btSair'>Sair</button>";

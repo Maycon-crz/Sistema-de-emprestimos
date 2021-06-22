@@ -1,26 +1,93 @@
+function contratarEmprestimo(){
+	function solicitandoContratacao(tipoDeEmprestimo){
+		ferramentas("Aguarde", 1, 0);		
+		$.ajax({
+			url: "confg.php",
+			type: "POST",
+			data: {"tipoDeEmprestimo": tipoDeEmprestimo},
+			dataType: "json",
+			success: function(retorno){
+				ferramentas("Aguarde", 0, 0);
+				if(retorno.nome != undefined){
+					document.getElementById("linhaDeConfirmacaoDeEmprestimo").innerHTML = 
+					"<h2 class='text-center text-warning border mt-3'>Confirme Seus Dados</h2>"+
+					"<p>Nome: "+retorno.nome+"</p>"+
+					"<p>Sobrenome: "+retorno.sobrenome+"</p>"+
+					"<p>E-mail: "+retorno.email+"</p>"+
+					"<button type='button' class='btn btn-lg btn-outline-success form-control'>Confirmo Meus Dados</button>";
+				}else{
+					alert(retorno);
+				}
+			}
+		});
+	}
+	var btContrarEmprestimo = document.getElementsByClassName("btContrarEmprestimo");
+	var tipoDeContratacao = function() {
+	    var tipoDeEmprestimo = this.value;
+	    solicitandoContratacao(tipoDeEmprestimo);
+	};
+	for (var i = 0; i < btContrarEmprestimo.length; i++) {
+	    btContrarEmprestimo[i].addEventListener('click', tipoDeContratacao, false);
+	}
+}
 //Esses dados Poderiam vir do banco de dados...
-	function emprestimoConsignado(){
-		var corpoDaOpcaoConsignado = {
-			titulo: "<u class='text-center text-info'><h1>Empréstimo Consignado</h1></u>",
-			descricao: "<p class='text-secondary'>O Empréstimo consignado é um tipo de empréstimo pessoal em que o pagamento das parcelas é descontado diretamente no seu contracheque, holerite ou benefício do INSS. É uma ótima opção de empréstimo fácil, para servidores públicos, aposentados do INSS ou funcionários de empresas privadas, pois tem uma das menores taxas do mercado.</p>",
-		}	
-		document.getElementById("linhaDinamicaDeEmprestimos").innerHTML = 
-		corpoDaOpcaoConsignado.titulo+corpoDaOpcaoConsignado.descricao;	
+function emprestimoConsignado(){
+	var corpoDaOpcaoConsignado = {
+		titulo: "<u class='text-center text-info'><h1>Empréstimo Consignado</h1></u>",
+		descricao: "<p class='text-secondary'>O Empréstimo consignado é um tipo de empréstimo pessoal em que o pagamento das parcelas é descontado diretamente no seu contracheque, holerite ou benefício do INSS. É uma ótima opção de empréstimo fácil, para servidores públicos, aposentados do INSS ou funcionários de empresas privadas, pois tem uma das menores taxas do mercado.</p>",
+		vantagens: 
+		"<div class='border rounded p-2'>"+
+			"<h3 class='text-center border'>Vantagens</h3>"+
+			"<h6><u>Praticidade:</u>É Digital! Você solicita o crédito, após aprovação, o dinheiro entra direto na sua conta;</h6>"+
+			"<h6><u>Prazo:</u>Pague em até 96 meses;</h6>"+
+			"<h6><u>Flexibilidade:</u>Primeira parcela em até 180 dias;</h6>"+
+			"<h6><u>Parcelas:</u>Mensais fixas, descontadas no contracheque, holerite ou benefício do INSS.</h6>"+
+		"</div>",
+		requisitos: 
+		"<div class='border rounded p-2'>"+
+			"<h3 class='text-center border'>Requisitos</h3>"+
+			"<h6>O empregador deve possuir convênio ativo para o desconto das prestações em folha de pagamento;</h6>"+
+			"<h6>Você deve possuir margem consignável disponível junto ao empregador;</h6>"+
+			"<h6>Ter limite de crédito disponível.</h6>"+
+		"</div>",
+		botaoContratar: "<button type='button' class='btn btn-lg btn-outline-dark form-control btContrarEmprestimo' value='Consignado'>Contrar Empréstimo $$$</button>",		
+	}	
+	document.getElementById("linhaDinamicaDeEmprestimos").innerHTML = 
+	corpoDaOpcaoConsignado.titulo+corpoDaOpcaoConsignado.descricao+corpoDaOpcaoConsignado.vantagens+
+	corpoDaOpcaoConsignado.requisitos+corpoDaOpcaoConsignado.botaoContratar;	
+	contratarEmprestimo();
+}
+function emprestimoAutomatico(){
+	var corpoDaOpcaoAutomatico = {
+		titulo: "<u class='text-center text-info'><h1>Empréstimo Automático</h1></u>",
+		descricao: "<p class='text-secondary'>Empréstimo rápido com liberação automática e sem burocracia.<br/>O CréditoParaTodxs Automático é uma opção de empréstimo com contratação simples e fácil e para você usar como quiser.</p>",
+		vantagens: 
+		"<div class='border rounded p-2'>"+
+			"<h3 class='text-center border'>Vantagens</h3>"+
+			"<h6><u>Prazo para Pagar:</u> Pague em até 72 meses;</h6>"+
+			"<h6><u>Tipo de Parcelas:</u> Mensais fixas;</h6>"+
+			"<h6><u>Taxas atrativas:</u> A taxa de juros pode variar;</h6>"+
+			"<h6><u>Flexibilidade:</u> Primeira parcela em até 60 dias.</h6>"+
+		"</div>",
+		condicoes_de_contratacao: 
+		"<div class='border rounded p-2'>"+
+			"<h3 class='text-center border'>Condições de contratação</h3>"+																
+			"<h6>Possuir conta;</h6>"+
+			"<h6>Limite de crédito vigente e disponível;</h6>"+
+			"<h6>Possuir Contrato de Adesão.</h6>"+
+		"</div>",
+		botaoContratar: "<button type='button' class='btn btn-lg btn-outline-dark form-control btContrarEmprestimo' value='Automatico'>Contrar Empréstimo $$$</button>",
 	}
-	function emprestimoAutomatico(){
-		var corpoDaOpcaoAutomatico = {
-			titulo: "<u class='text-center text-info'><h1>Empréstimo Automático</h1></u>",
-			descricao: "<p class='text-secondary'>Empréstimo rápido com liberação automática e sem burocracia.<br/>O CréditoParaTodxs Automático é uma opção de empréstimo com contratação simples e fácil e para você usar como quiser.</p>",
-			vantagens: "<div class='border rounded p-2'><h3>Vantagens</h3><h6><u>Prazo para Pagar:</u></h6><h6><u>Tipo de Parcelas:</u></h6><h6><u>Flexibilidade:</u></h6></div>",			
-		}
-		document.getElementById("linhaDinamicaDeEmprestimos").innerHTML = 
-		corpoDaOpcaoAutomatico.titulo+corpoDaOpcaoAutomatico.descricao+corpoDaOpcaoAutomatico.vantagens;
-	}
+	document.getElementById("linhaDinamicaDeEmprestimos").innerHTML = 
+	corpoDaOpcaoAutomatico.titulo+corpoDaOpcaoAutomatico.descricao+corpoDaOpcaoAutomatico.vantagens+
+	corpoDaOpcaoAutomatico.condicoes_de_contratacao+corpoDaOpcaoAutomatico.botaoContratar;
+	contratarEmprestimo();
+}
 //----
-function selecionando_Emprestimo(){
+function selecionando_Emprestimo(){	
 	var opcoesDeEmprestimos = document.getElementsByClassName("opcoesDeEmprestimos");
-
 	var definindoAcaoPeloTipoDeEmprestimo = function() {
+		document.getElementById("linhaDeConfirmacaoDeEmprestimo").innerHTML = "";
 	    var tipoDeEmprestimo = this.id;
 	    switch(tipoDeEmprestimo){
 	    	case "automatico":
@@ -195,7 +262,7 @@ function ferramentas(parametro, segundoparametro, terceiroparametro){
 				case 1:								
 					aguarde.style.height = "50px";							
 					aguarde.innerHTML = "<div class='spinner-border text-success' role='status'>"+
-					"<span class='sr-only'>RecicladArte...</span>"+
+					"<span class='sr-only'>Todxs...</span>"+
 					"</div>";
 				break;	
 			}

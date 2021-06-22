@@ -22,6 +22,11 @@
 			<div class='col-10' id='linhaDinamicaDeEmprestimos'></div>
 			<div class='col-1'>&nbsp;</div>
 		</div>
+		<div class='row pt-3'>
+			<div class='col-1'>&nbsp;</div>
+			<div class='col-10 border' id='linhaDeConfirmacaoDeEmprestimo'></div>
+			<div class='col-1'>&nbsp;</div>
+		</div>
 		<div class='row pt-2'>
 			<div class='col-1'>&nbsp;</div>
 			<div class='col-10 text-center border rounded opcoesDeEmprestimos'>

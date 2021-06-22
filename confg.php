@@ -1,6 +1,14 @@
 <?php require_once("include/conn.php"); ?>
 <?php session_start(); ?>
 <?php 	
+	class contratando_emprestimo_automatico{
+		function exibirDadosParaConfirmacao(){
+			$dados['email'] = $_SESSION['email'];
+			$dados['nome'] = $_SESSION['nome'];
+			$dados['sobrenome'] = $_SESSION['sobrenome'];
+			echo json_encode($dados);
+		}
+	}
  	class conta_Digital_Cadastro{
  		function cadastrandoUsuario($con, $conta_Digital_Acesso, $nome, $sobrenome, $email, $senha, $senhaCriptografada){ 			
 			$sqlInsertUsuarioDB = "INSERT INTO usuarios(nome, sobrenome, email, senha) VALUES(:nome, :sobrenome, :email, :senha)";
@@ -132,29 +140,33 @@
 		}	
  	} 	
 	class inicio{
+		function opcoes_Quando_Logado_Na_Conta($con, $ferramentas){
+			$contratando_emprestimo_automatico = new contratando_emprestimo_automatico;
+
+			if(isset($_POST['tipoDeEmprestimo'])){
+				//Só contrata o emprestimo se estiver logado!
+				$logado = $_SESSION['logado'] ?? "";				
+				if($logado == "sim"){
+					$contratando_emprestimo_automatico->exibirDadosParaConfirmacao();
+				}else{ echo json_encode("Deslogado! Por favor Acesse sua conta ou Cadastre-se!"); }
+			}
+			if(isset($_POST['sair'])){
+				$ferramentas->sair();
+			}
+		}
 		function iniciando(){
 			$banco = new banco;
 			$con = $banco->conexao();
 
 			$ferramentas = new ferramentas;
 			$conta_Digital_Acesso = new conta_Digital_Acesso;
-			$conta_Digital_Cadastro = new conta_Digital_Cadastro;
+			$conta_Digital_Cadastro = new conta_Digital_Cadastro;					
 
-			if(isset($_POST['sair'])){
-				$ferramentas->sair();
-			}
+			$this->opcoes_Quando_Logado_Na_Conta($con, $ferramentas);
 
-			// $_POST['nomeCadastroUsuario'] = "aaa";
-			// $_POST['sobrenomeCadastroUsuario'] = "bbb";
-			// $_POST['emailCadastroUsuario'] = "aaaa@gmail.com";
-			// $_POST['confirmacaoDeEmailCadastroUsuario'] = "aaaa@gmail.com";
-			// $_POST['senhaCadastroUsuario'] = "12345678A";
-			// $_POST['confirmacaoDeSenhaCadastroUsuario'] = "12345678A";
 			if(isset($_POST['nomeCadastroUsuario'])){
 				$conta_Digital_Cadastro->validacao_Cadastro($con, $ferramentas, $conta_Digital_Acesso);				
 			}
-			// $_POST['emaiLogin'] = "sdfds@gmail.com";
-			// $_POST['senhaLogin'] = "12345678A";
 			if(isset($_POST['emaiLogin'])){
 				$conta_Digital_Acesso->validacao_Acesso($con, $ferramentas);				
 			}
