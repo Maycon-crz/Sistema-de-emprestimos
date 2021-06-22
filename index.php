@@ -1,28 +1,32 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Desafio Serasa</title>
-    <!-- jquery -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>    
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">    
-    <link rel="stylesheet" type="text/css" href="css/estilo.css">	    
-</head>
-<body>
-	<div class='container border'>
-		<div class='row'>
+<?php require_once("include/cabecalho.php"); ?>
+	<div class='container border rounded'>
+		<div class='row linhasEmprestimos'>
 			<div class='col-12'>
-				<h1 class='text-center text-secondary border'>Desafio Serasa ProWay</h1>
+				<h1 class='text-center text-secondary border rounded mt-3 p-3'>Conheça as opções de empréstimos pessoais:</h1>
 			</div>			
 		</div>
-		<div class='row'>
-			
+		<div class='row linhasEmprestimos'>
+			<div class='col-1'>&nbsp;</div>
+			<div class='col-5 text-center border rounded opcoesDeEmprestimos' id='automatico'>
+				<h1 class='text-secondary'>Empréstimo Automático</h1>				
+				<img src='img/automatico.jpg' class='form-control p-0' />
+			</div>		
+			<div class='col-5 text-center border rounded opcoesDeEmprestimos' id='consignado'>
+				<h1 class='text-secondary'>Empréstimo Consignado</h1>
+				<img src='img/consignado.jpg' class='form-control p-0' />
+			</div>
+			<div class='col-1'>&nbsp;</div>
+		</div>
+		<div class='row' id='linhaDinamicaDeEmprestimos'></div>
+		<div class='row pt-2'>
+			<div class='col-1'>&nbsp;</div>
+			<div class='col-10 text-center border rounded opcoesDeEmprestimos'>
+				<h1 class='text-secondary m-5'>
+					Simulação de Empréstimo
+					<img src='img/simulacao.jpg' class='border rounded-pill'/>
+				</h1>
+			</div>
+			<div class='col-1'>&nbsp;</div>
 		</div>
 	</div>
-</body>
-<footer>
-	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
-</footer>
-</html>
+<?php require_once("include/rodape.php"); ?>

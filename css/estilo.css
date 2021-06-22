@@ -1,0 +1,11 @@
+.linhasEmprestimos img{
+	width: 100%;
+	height: 250px;	
+}
+
+.opcoesDeEmprestimos:hover{
+	border: 1px solid darkred !important;	
+}
+.opcoesDeEmprestimos :hover{
+	color:purple !important;
+}
