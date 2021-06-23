@@ -7,7 +7,7 @@
  <img src='img/baixando_xampp.PNG'/>
  <h3> 2) Clone o repositório para a pasta htdocs do XAMPP ou baixe o zip e descompacte lá;</h3>
  <img src='img/clonando.PNG'/>
- <h3> 3) Va na no navegador e acesse: http://localhost/phpmyadmin/index.php </h3>
+ <h3> 3) No navegador e acesse: http://localhost/phpmyadmin/index.php </h3>
  <img src='img/dois.PNG'/>
  <h3> 4) Clique em importar -> Escolher ficheiro </h3>
  <img src='img/tres.PNG'/>
