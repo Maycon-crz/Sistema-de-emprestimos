@@ -20,7 +20,7 @@
 			</button>
 			<div class="collapse navbar-collapse" id="navbarSupportedContent">
 				<ul class="navbar-nav me-auto mb-2 mb-lg-0 text-center">						
-					<li class="nav-item dropdown pt-1">
+					<li class="nav-item dropdown pt-2">
 						<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Empréstimos e Serviços</a>
 						<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
 							<li><a class="dropdown-item" href="#linhaDinamicaDeEmprestimos">Empréstimo Automático</a></li>
@@ -29,22 +29,20 @@
 							<li><a class="dropdown-item" href="#">Simulação de empréstimo</a></li>
 						</ul>
 					</li>
-					<li class="nav-item pt-1">												
-						<?php		
-							$nome = $_SESSION['nome'] ?? "";
-							$sobrenome = $_SESSION['sobrenome'] ?? "";
-							if($nome != NULL){								
-								echo "<u><p class='pt-2'>";
-								echo $nome." ".$sobrenome;
-								echo "<button type='button' class='btn btn-outline-danger p-0 pe-5 ps-5 ms-3' id='btSair'>Sair</button>";
-								echo "</p></u>";
-							}else{ echo "<button type='button' class='btn btn-outline-primary form-control' data-bs-toggle='modal' data-bs-target='#ModalContaDigital' id='btModalContaDigital'>Conta Digital</button>"; }							
-						?>
+																	
+					<?php		
+						$nome = $_SESSION['nome'] ?? "";
+						$sobrenome = $_SESSION['sobrenome'] ?? "";
+						if($nome != NULL){								
+							echo "<li class='nav-item pt-3'><u>".$nome." ".$sobrenome."</u></li>";
+							echo "<li class='nav-item pt-3'><button type='button' class='btn btn-outline-danger p-0 pe-5 ps-5 ms-1' id='btSair'>Sair</button></li>";
+						}else{ echo "<li class='nav-item pt-2'><button type='button' class='btn btn-outline-primary form-control' data-bs-toggle='modal' data-bs-target='#ModalContaDigital' id='btModalContaDigital'>Conta Digital</button></li>"; }
+					?>
 					</li>
 				</ul>
 				<form class="d-flex">
-					<input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-					<button class="btn btn-outline-success" type="submit">Search</button>
+					<input class="form-control me-2" type="search" placeholder="Buscar" aria-label="Search">
+					<button class="btn btn-outline-success" type="submit">🔍</button>
 				</form>
 			</div>
 		</div>

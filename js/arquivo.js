@@ -9,15 +9,14 @@ function contratarEmprestimo(){
 			success: function(retorno){
 				ferramentas("Aguarde", 0, 0);
 				if(retorno.nome != undefined){
+					window.location.href = "#linhaDeConfirmacaoDeEmprestimo";
 					document.getElementById("linhaDeConfirmacaoDeEmprestimo").innerHTML = 
 					"<h2 class='text-center text-warning border mt-3'>Confirme Seus Dados</h2>"+
 					"<p>Nome: "+retorno.nome+"</p>"+
 					"<p>Sobrenome: "+retorno.sobrenome+"</p>"+
 					"<p>E-mail: "+retorno.email+"</p>"+
 					"<button type='button' class='btn btn-lg btn-outline-success form-control'>Confirmo Meus Dados</button>";
-				}else{
-					alert(retorno);
-				}
+				}else{ alert(retorno); }
 			}
 		});
 	}
@@ -51,16 +50,16 @@ function emprestimoConsignado(){
 			"<h6>Ter limite de crédito disponível.</h6>"+
 		"</div>",
 		botaoContratar: "<button type='button' class='btn btn-lg btn-outline-dark form-control btContrarEmprestimo' value='Consignado'>Contrar Empréstimo $$$</button>",		
-	}	
+	}		
 	document.getElementById("linhaDinamicaDeEmprestimos").innerHTML = 
 	corpoDaOpcaoConsignado.titulo+corpoDaOpcaoConsignado.descricao+corpoDaOpcaoConsignado.vantagens+
-	corpoDaOpcaoConsignado.requisitos+corpoDaOpcaoConsignado.botaoContratar;	
+	corpoDaOpcaoConsignado.requisitos+corpoDaOpcaoConsignado.botaoContratar;		
 	contratarEmprestimo();
 }
 function emprestimoAutomatico(){
 	var corpoDaOpcaoAutomatico = {
 		titulo: "<u class='text-center text-info'><h1>Empréstimo Automático</h1></u>",
-		descricao: "<p class='text-secondary'>Empréstimo rápido com liberação automática e sem burocracia.<br/>O CréditoParaTodxs Automático é uma opção de empréstimo com contratação simples e fácil e para você usar como quiser.</p>",
+		descricao: "<p class='text-secondary'>Empréstimo rápido com liberação automática e sem burocracia. O CréditoParaTodxs Automático é uma opção de empréstimo com contratação simples e fácil e para você usar como quiser.</p>",
 		vantagens: 
 		"<div class='border rounded p-2'>"+
 			"<h3 class='text-center border'>Vantagens</h3>"+
@@ -87,14 +86,16 @@ function emprestimoAutomatico(){
 function selecionando_Emprestimo(){	
 	var opcoesDeEmprestimos = document.getElementsByClassName("opcoesDeEmprestimos");
 	var definindoAcaoPeloTipoDeEmprestimo = function() {
-		document.getElementById("linhaDeConfirmacaoDeEmprestimo").innerHTML = "";
+		document.getElementById("linhaDeConfirmacaoDeEmprestimo").innerHTML = "";		
 	    var tipoDeEmprestimo = this.id;
 	    switch(tipoDeEmprestimo){
 	    	case "automatico":
 	    		emprestimoAutomatico();
+	    		document.getElementById("linhaDeParcelasParaEmprestimo").style.display = "block";	    		
 	    	break;
 	    	case "consignado":;
 	    		emprestimoConsignado();
+	    		document.getElementById("linhaDeParcelasParaEmprestimo").style.display = "block";	    		
 	    	break;
 	    }
 	};
