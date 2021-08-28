@@ -1,5 +1,5 @@
-# Desafio-ProWay-Serasa
- Teste de programação
+# Sistema de empréstimos
+Empréstimo Automático e Consignado
 
  Para Visualizar e Interagir com o Sistema siga os passos:
 
@@ -11,9 +11,9 @@
  <img src='img/dois.PNG'/>
  <h3> 4) Clique em importar -> Escolher ficheiro </h3>
  <img src='img/tres.PNG'/>
- <h3> 5) Navegue até a pasta do banco de dados: C:\xampp\htdocs\Desafio-ProWay-Serasa\Banco_de_Dados</h3>
+ <h3> 5) Navegue até a pasta do banco de dados</h3>
  <img src='img/quatro.PNG'/>
  <h3> 6) Selecione -> desafio_serasa.sql -> Clique no botão -> Executar;</h3>
  <img src='img/cinco.PNG'/>
- <h3> 7) Com o banco de dados Importado digite no navegador: http://localhost/Desafio-ProWay-Serasa/</h3>
+ <h3> 7) Acesse o projeto no localhost</h3>
  <img src='img/seis.PNG'/>
